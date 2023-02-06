@@ -2,3 +2,18 @@
   text-align: center;
 }
 
+nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: black;
+  padding: 20px 5px;
+}
+
+a{
+  text-decoration: none;
+  color: antiquewhite;
+  
+}
+
