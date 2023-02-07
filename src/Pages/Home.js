@@ -5,6 +5,11 @@ import { auth, db } from "../firebase-config";
 function Home({ isAuth }) {
   const [postList, setPostList] = useState([]);
   const postCollectionRef = collection(db, "posts");
+  
+    const deletePost = async (id) => {
+      const postDoc = doc(db, "posts", id);
+      await deleteDoc(postDoc);
+    };
 
   useEffect(() => {
     const getPosts = async () => {
@@ -12,19 +17,9 @@ function Home({ isAuth }) {
       setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getPosts();
-  }, []);
+  }, [deletePost]);
 
-  const deletePost = async (id) => {
-    const postDoc = doc(db, "posts", id);
-    await deleteDoc(postDoc);
-  };
-
-  console.log(postList[1])
-  const now = new Date()
-  const dd = new Intl.DateTimeFormat('en-UK');
-  console.log( dd.format(now))
-
-  return (
+ return (
     <div className="homepage">
       {postList.map((post) => (
         <div className="home_post">
