@@ -44,5 +44,33 @@
     font-weight: bold;
 }
 .homepage{
-    padding: 10px 40px;
+    padding: 10px 20px;
+}
+.home_post{
+    margin: 20px 0;
+}
+
+.home_post_title{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    margin: 10px 0;
+}
+h3, p { 
+    padding: 0;
+    margin: 0;
+}
+
+.del_btn{
+    text-align: end;
+    margin-bottom: 5px;
+}
+.home_author{
+    text-align: end;
+    background-color: antiquewhite;
+    padding-right: 20px;
+}
+.date{
+    font-size: 12px;
+    color: gray;
 }

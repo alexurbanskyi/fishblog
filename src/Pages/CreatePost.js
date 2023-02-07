@@ -11,10 +11,14 @@ function CreatePost({isAuth}) {
   const postCollectionRef = collection(db, "posts");
 
   const createPost = async () => {
+    const now = new Date()
+    const dateFormat = new Intl.DateTimeFormat('en-UK');
+
     await addDoc(postCollectionRef, {
       title: title,
       postText: postText,
       author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
+      currentDate: dateFormat.format(now)
     });
     navigate("/");
   };

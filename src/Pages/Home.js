@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
 import { auth, db } from "../firebase-config";
 
-function Home({isAuth}) {
+function Home({ isAuth }) {
   const [postList, setPostList] = useState([]);
   const postCollectionRef = collection(db, "posts");
 
@@ -15,22 +15,32 @@ function Home({isAuth}) {
   }, []);
 
   const deletePost = async (id) => {
-    const postDoc = doc(db, 'posts', id)
-    await deleteDoc(postDoc)
-  }
+    const postDoc = doc(db, "posts", id);
+    await deleteDoc(postDoc);
+  };
 
+  console.log(postList[1])
+  const now = new Date()
+  const dd = new Intl.DateTimeFormat('en-UK');
+  console.log( dd.format(now))
 
-  console.log('IS AUTH -->', isAuth)
   return (
     <div className="homepage">
       {postList.map((post) => (
-        <div>
-          <h2>{post.title}</h2>
-          <h3>{post.postText}</h3>
-          {
-            isAuth && post.author.id === auth.currentUser.uid && <button onClick={() => deletePost(post.id)}>&#128465;</button>
-          }
-          <p>author: {post.author.name}</p>
+        <div className="home_post">
+          <div className="home_post_title">
+            <h3 >{post.title}</h3>
+            {
+              post.currentDate && <p className="date">{post.currentDate}</p>
+            }
+          </div>
+          {isAuth && post.author.id === auth.currentUser.uid && (
+            <div className="del_btn">
+              <button onClick={() => deletePost(post.id)}>&#128465;</button>
+            </div>
+          )}
+          <div>{post.postText}</div>
+          <p className="home_author">author: {post.author.name}</p>
         </div>
       ))}
     </div>
