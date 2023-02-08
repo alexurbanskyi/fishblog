@@ -7,7 +7,7 @@
    justify-content: center;
 }
 .login_btn{
-    background-color: rgb(198, 206, 241);
+    background-color: antiquewhite;
     padding: 10px;
     border-radius: 5px;
     font-weight: bold;
@@ -38,7 +38,7 @@
     padding: 20px 5px;
 }
 .cp_button{
-    background-color: rgb(198, 206, 241);
+    background-color: antiquewhite;
     padding: 10px;
     border-radius: 5px;
     font-weight: bold;

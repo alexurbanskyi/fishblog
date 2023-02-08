@@ -17,8 +17,9 @@ function Home({ isAuth }) {
       setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getPosts();
-  }, [deletePost]);
-
+    console.log('useeffect RENDER')
+  }, []);
+ console.log('HOME RENDER')
  return (
     <div className="homepage">
       {postList.map((post) => (
